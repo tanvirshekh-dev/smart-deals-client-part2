@@ -10,7 +10,7 @@ import useAxiosSecure from "../../Hooks/useAxiosSecure";
 const CreateProduct = () => {
   const { user } = useAuth();
   // const axiosInstance = useAxios()
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
 
   const handleCreateProduct = (e) => {
     e.preventDefault();
@@ -30,7 +30,7 @@ const CreateProduct = () => {
       seller_name: user.displayName,
     };
 
-    // axios.post("http://localhost:3000/products", newProduct).then((data) => {
+    // axios.post("https://smart-deals-server-part2-indol.vercel.app/products", newProduct).then((data) => {
     //   console.log(data.data);
     //   if (data.data.insertedId) {
     //     Swal.fire({
@@ -40,10 +40,9 @@ const CreateProduct = () => {
     //   }
     // });
 
-    axiosSecure.post('/products', newProduct)
-      .then(data => {
-      console.log(data.data)
-    })
+    axiosSecure.post("/products", newProduct).then((data) => {
+      console.log("after secure data", data.data);
+    });
   };
 
   return (

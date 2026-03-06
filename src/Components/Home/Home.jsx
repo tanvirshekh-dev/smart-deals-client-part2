@@ -3,7 +3,7 @@ import Hero from "./Hero";
 import LatestProducts from "../LatestProducts/LatestProducts";
 
 const latestProductPromise = fetch(
-  "http://localhost:3000/latest-products"
+  "https://smart-deals-server-part2-indol.vercel.app/latest-products",
 ).then((res) => res.json());
 const Home = () => {
   return (

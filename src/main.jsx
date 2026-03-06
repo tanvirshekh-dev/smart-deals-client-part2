@@ -31,9 +31,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/createProduct",
-        element: <PrivetRoute>
-          <CreateProduct></CreateProduct>
-        </PrivetRoute>,
+        element: (
+          <PrivetRoute>
+            <CreateProduct></CreateProduct>
+          </PrivetRoute>
+        ),
       },
       {
         path: "/login",
@@ -58,7 +60,9 @@ const router = createBrowserRouter([
       {
         path: "/productDetails/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/products/${params.id}`),
+          fetch(
+            `https://smart-deals-server-part2-indol.vercel.app/products/${params.id}`,
+          ),
         element: (
           <PrivetRoute>
             <ProductDetails></ProductDetails>

@@ -12,15 +12,17 @@ const ProductDetails = () => {
   const product = useLoaderData();
 
   useEffect(() => {
-    axios.get(`http://localhost:3000/products/bids/${productId}`)
-      .then(data => {
-      console.log('after axios get', data)
-    })
+    axios
+      .get(
+        `https://smart-deals-server-part2-indol.vercel.app/products/bids/${productId}`,
+      )
+      .then((data) => {
+        console.log("after axios get", data);
+      });
   }, [productId]);
 
-  
   // useEffect(() => {
-  //   fetch(`http://localhost:3000/products/bids/${productId}`, {
+  //   fetch(`https://smart-deals-server-part2-indol.vercel.app/products/bids/${productId}`, {
   //     headers: {
   //       authorization: `Bearer ${user.accessToken}`,
   //     },
@@ -53,7 +55,7 @@ const ProductDetails = () => {
       status: "pending",
     };
 
-    fetch("http://localhost:3000/bids", {
+    fetch("https://smart-deals-server-part2-indol.vercel.app/bids", {
       method: "POST",
       headers: {
         "content-type": "application/json",

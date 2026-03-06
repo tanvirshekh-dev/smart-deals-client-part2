@@ -8,29 +8,25 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then((result) => {
-          console.log(result.user);
-          const newUser = {
-              name: result.user.displayName,
-              email: result.user.email,
-              image: result.user.photoURL
-          }
+        console.log(result.user);
+        const newUser = {
+          name: result.user.displayName,
+          email: result.user.email,
+          image: result.user.photoURL,
+        };
 
-          //   create the user database
-          fetch('http://localhost:3000/users', {
-              method: 'POST',
-              headers: {
-                  'content-type' : 'application/json'
-              },
-              body: JSON.stringify(newUser)
-          })
-          .then(res => res.json())
-              .then(data => {
-              console.log('data after save user ', data)
-          })
-
-
-
-
+        //   create the user database
+        fetch("https://smart-deals-server-part2-indol.vercel.app/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("data after save user ", data);
+          });
       })
       .catch((error) => {
         console.log(error);
