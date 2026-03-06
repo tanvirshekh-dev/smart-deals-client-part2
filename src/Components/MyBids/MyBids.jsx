@@ -12,18 +12,22 @@ const MyBids = () => {
     if (user?.email) {
       fetch(`http://localhost:3000/bids?email=${user.email}`, {
         headers: {
-          authorization: `Bearer ${localStorage.getItem("token")}`
-        }
+          authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       })
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
-
-          setBids(data);
+          if (Array.isArray(data)) {
+            setBids(data);
+          } else {
+            setBids([]); // fallback to empty array
+          }
+          // setBids(data);
         });
     }
-  }, [user]);  
-  
+  }, [user]);
+
   // useEffect(() => {
   //   if (user?.email) {
   //     fetch(`http://localhost:3000/bids?email=${user.email}`, {
